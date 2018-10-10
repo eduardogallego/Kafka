@@ -20,7 +20,7 @@ public class ConfigSt {
             }
             PROPERTIES.load(inputStream);
         } catch (Exception ex) {
-            LOGGER.error("Error reading Config File", ex);
+            LOGGER.error("Error reading Config File: " + ex.getMessage(), ex);
         }
     }
 
