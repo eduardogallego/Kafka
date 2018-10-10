@@ -2,28 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kafka</artifactId>
+        <groupId>edu.kafka</groupId>
+        <version>1.0</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.kafka</groupId>
-    <artifactId>kafka</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <modules>
-        <module>lessons-kafka</module>
-        <module>lessons-twitter</module>
-    </modules>
+    <artifactId>lessons-twitter</artifactId>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
@@ -56,4 +42,5 @@
         </dependency>
 
     </dependencies>
+
 </project>
