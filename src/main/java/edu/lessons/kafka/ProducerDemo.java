@@ -1,4 +1,4 @@
-package edu.kafka;
+package edu.lessons.kafka;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;

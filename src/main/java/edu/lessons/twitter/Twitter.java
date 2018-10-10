@@ -1,4 +1,4 @@
-package edu.twitter;
+package edu.lessons.twitter;
 
 import edu.config.ConfigSt;
 import org.apache.commons.codec.binary.Base64;
@@ -22,10 +22,10 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class TwitterProducer implements Runnable {
+public class Twitter implements Runnable {
 
     private static final ConfigSt CONFIG = ConfigSt.getInstance();
-    private static final Logger LOGGER = LoggerFactory.getLogger(TwitterProducer.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(Twitter.class.getName());
     private static final SimpleDateFormat TWITTER_SDF =
             new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZZZ yyyy", Locale.ENGLISH);
     private static final String CONSUMER_KEY = CONFIG.getConfig("consumer_key"),
@@ -35,11 +35,11 @@ public class TwitterProducer implements Runnable {
             KAFKA_SERVER = CONFIG.getConfig("kafka_server"),
             QUERY_FILTER = CONFIG.getConfig("query_filter");
 
-    public TwitterProducer() {
+    public Twitter() {
     }
 
     public static void main(String[] args) {
-        new TwitterProducer().run();
+        new Twitter().run();
     }
 
     private static String requestBearerToken() throws IOException {
