@@ -1,4 +1,4 @@
-package edu.lessons.twitter;
+package course.twitter;
 
 import edu.config.ConfigSt;
 import org.apache.commons.codec.binary.Base64;

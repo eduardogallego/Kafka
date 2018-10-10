@@ -1,4 +1,4 @@
-package edu.lessons.kafka;
+package course.kafka;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

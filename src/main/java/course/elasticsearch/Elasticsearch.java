@@ -1,4 +1,4 @@
-package edu.lessons.elasticsearch;
+package course.elasticsearch;
 
 import edu.config.ConfigSt;
 import org.apache.http.HttpHost;
