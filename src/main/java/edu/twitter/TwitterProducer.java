@@ -33,6 +33,7 @@ public class TwitterProducer implements Runnable {
             ENDPOINT_AUTHENTICATION = "https://api.twitter.com/oauth2/token",
             ENDPOINT_TWEET_SEARCH = "https://api.twitter.com/1.1/search/tweets.json",
             KAFKA_SERVER = CONFIG.getConfig("kafka_server"),
+            KAFKA_TOPIC = CONFIG.getConfig("kafka_topic"),
             QUERY_FILTER = CONFIG.getConfig("query_filter");
 
     public TwitterProducer() {
@@ -184,23 +185,18 @@ public class TwitterProducer implements Runnable {
 
             // loop to collect tweets
             long lastId = 0;
-            long tweetNum = 0;
             while (true) {
                 JSONArray msgArr = getTweets(bearerToken, lastId);
                 if (msgArr != null) {
                     for (int i = 0; i < msgArr.size(); ++i) {
                         JSONObject tweet = (JSONObject) msgArr.get(i);
-                        JSONObject usrArr = (JSONObject) tweet.get("user");
-                        String usr = usrArr.get("screen_name").toString();
-                        String txt = tweet.get("text").toString();
                         long tweetId = Long.parseLong(tweet.get("id_str").toString());
                         if (tweetId > lastId) {
                             lastId = tweetId;
                         }
-                        Date date = TWITTER_SDF.parse(tweet.get("created_at").toString());
-                        String msg = ++tweetNum + " - " + date + " - " + usr + " - " + txt;
+                        String msg = tweet.toString();
                         LOGGER.info(msg);
-                        producer.send(new ProducerRecord<>("twitter_tweets", null, msg), new Callback() {
+                        producer.send(new ProducerRecord<>(KAFKA_TOPIC, null, msg), new Callback() {
                             @Override
                             public void onCompletion(RecordMetadata recordMetadata, Exception e) {
                                 if (e != null) {

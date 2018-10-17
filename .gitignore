@@ -3,3 +3,6 @@ target
 .DS_Store
 *.iml
 config.properties
+connect-standalone.properties
+twitter.properties
+kafka-connect/connectors/kafka-connect-twitter
